@@ -4,12 +4,14 @@ import { Container, Row, Col, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
 class EventDetail extends Component {
-  constructor(props) {
-    super(props);
+  constructor() {
+    super();
     this.state = { event: {} };
     this._service = new EventsDetailsService();
-    console.log(this.state);
+    // console.log('---------estoy aquí---------',this.state);
   }
+
+  
 
   componentDidMount = () => {
     console.log(this.props);
@@ -20,9 +22,25 @@ class EventDetail extends Component {
       .catch(err => console.log(err));
   };
 
+  updateEventsList = () => {
+
+    this._EventService
+      .getAllEvents()
+      .then(allEventsFromDB => this.setState({
+        events: allEventsFromDB.data
+      }))
+      .catch(err => console.log("Error", err));
+  };
+
+
+
+
+
 joinThePlan = () => {
-  alert('con este botón me apunto a este plan')
+
 }
+
+
 
 
   render() {

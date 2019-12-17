@@ -39,6 +39,14 @@ router.get("/delete/:id", (req, res) => {
     .catch(err => console.log(err));
 });
 
+router.post('/change', (req, res) => {
+  const { capacityPlace } = req.body.event;
+  Event.findByIdAndUpdate(req.body.eventID, { capacityPlace }, {new: true})
+  .then(theNewUpdatedEvent => res.json(theNewUpdatedEvent))
+  .catch(err => console.log(err))
+
+});
+
 module.exports = router
 
 
