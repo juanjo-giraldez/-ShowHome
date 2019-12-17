@@ -14,6 +14,8 @@ require('./configs/session.config')(app)
 app.use('/api/auth', require('./routes/Auth.routes'))
 app.use('/api/space', require('./routes/Space.routes'))
 app.use('/api/event', require('./routes/Event.routes'))
+app.use((req, res) =>{ res.sendFile(__dirname + "/public/index.html")})
+
 
 
 module.exports = app
