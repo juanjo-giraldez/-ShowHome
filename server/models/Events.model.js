@@ -6,16 +6,21 @@ const eventSchema = new Schema({
         type: Schema.Types.ObjectId,
         ref: "User"
     },
+    participant: [{
+        type: Schema.Types.ObjectId,
+        ref: "User"
+    }],
     nameEvent: String,
     category: {
         type: String,
-        enum: ['cinema', 'concert', 'monologue', 'masterClass', 'show']
+        enum: ['Cine', 'Música', 'Clases', 'Encuentros', 'Espectaculos']
     },
     email: String,
     town: String,
     capacityPlace: Number,
     description: String,
-    
+    imgUrl: String
+
 }, {
     timestamps: true
 })

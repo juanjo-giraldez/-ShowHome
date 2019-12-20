@@ -22,10 +22,7 @@ class EventEdit extends Component {
     this.service
       .EventEdit(this.state, this.props.event._id)
       .then(theEditedEvent => {
-        console.log(
-          "la respuesta del sevicdor tras efiat evento es",
-          theEditedEvent
-        );
+        
         this.props.updateEventsList(this.state);
         this.props.closeModalWindow();
         // this.props.history.push("/edit");
@@ -79,7 +76,7 @@ class EventEdit extends Component {
           />
         </Form.Group>
         <Form.Group>
-          <Form.Label>Capacidad de aforo</Form.Label>
+          < Form.Label > Plazas </Form.Label>
           <Form.Control
             type="number"
             name="capacityPlace"

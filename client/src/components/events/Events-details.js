@@ -4,50 +4,58 @@ import { Container, Row, Col, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
 class EventDetail extends Component {
-  constructor() {
-    super();
-    this.state = { event: {} };
+  constructor(props) {
+    super(props);
+    this.state =  {event: {} };
     this._service = new EventsDetailsService();
-    // console.log('---------estoy aquí---------',this.state);
   }
-
   
-
+  
+  
   componentDidMount = () => {
-    console.log(this.props);
+    
     const eventId = this.props.match.params.id;
     this._service
-      .getOneEvent(eventId)
-      .then(theEvent => this.setState({ event: theEvent.data }))
-      .catch(err => console.log(err));
+    .getOneEvent(eventId)
+    .then(theEvent => this.setState({ event: theEvent.data }))
+    .catch(err => console.log(err));
   };
-
+  
   updateEventsList = () => {
-
-    this._EventService
-      .getAllEvents()
-      .then(allEventsFromDB => this.setState({
-        events: allEventsFromDB.data
-      }))
-      .catch(err => console.log("Error", err));
+    this._service
+    .getAllEvents()
+    .then(allEventsFromDB => this.setState({
+      events: allEventsFromDB.data
+    }))
+    .catch(err => console.log("Error", err));
   };
-
-
-
-
-
-joinThePlan = () => {
-
-}
-
-
-
+  
+  
+  
+  
+  
+  joinThePlan = () => {
+    let id = this.props.match.params.id
+    let idUser = this.props.loggedInUser._id
+    this._service.joinedEvent(id, idUser)
+    let userRole = this.props.loggedInUser.role
+    if (userRole === 'creator') {return (this.props.history.push('/profile/creator'))}
+    if (userRole === 'host') {return (this.props.history.push('/profile/host'))}
+    if (userRole === 'explorer') {return (this.props.history.push('/profile/explorer'))}
+    }
+    
 
   render() {
+    
+    
     return (
       <Container>
         <section>
           <Row>
+            <Col md={6}>
+              <img src={this.state.event.imgUrl} alt={'foto de detalles '}></img>
+              
+            </Col>
             <Col md={6}>
               <h1> {this.state.event.nameEvent}</h1>
               <h3>
@@ -58,19 +66,21 @@ joinThePlan = () => {
               </p>
               <hr></hr>
               <p>
-                <strong>Aforo:</strong> {this.state.event.capacityPlace} personas|{" "}
-                <strong>Superficie:</strong> {this.state.event.surface}
+                <strong>Plazas:</strong> {this.state.event.capacityPlace} personas|
+                <strong>Correo eletrónico</strong> {this.state.event.email}
+
+              
               </p>
-              <Link to="/profile" className="btn btn-dark">
-                Volver
-              </Link>
+               < Row >
+              <Button className="button-card"variant="dark" onClick={this.joinThePlan}>Me apunto</Button> 
+              </Row>
+              < Row >
+              < Link 
+              to = "/plans"
+              className = "btn btn-dark button-card btn-top  " > Volver </Link>
+              </Row>
             </Col>
-            <Col md={{ span: 4, offset: 2 }}>
-              {/* <img src={this.state.event.imageUrl} alt={this.state.event.nameEvent}></img> */}
-              <Button variant="dark" onClick={this.joinThePlan}>
-                Me apunto
-              </Button>
-            </Col>
+            
           </Row>
         </section>
       </Container>

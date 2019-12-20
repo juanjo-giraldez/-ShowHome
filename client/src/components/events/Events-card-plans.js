@@ -10,33 +10,36 @@ class EventCardPlans extends React.Component {
   render() {
     return (
       <Col md={4}>
-        <h3>
-          <strong> {this.props.nameEvent} </strong>{" "}
-        </h3>{" "}
-        <h4>
-          <strong> Ciudad: </strong> {this.props.town}{" "}
-        </h4>{" "}
-        <h5>
-          <strong> Categoria: </strong> {this.props.category}{" "}
-        </h5>{" "}
-        <h5>
-          <strong> Superficie: </strong> {this.props.surface}
-          metros cuadrados{" "}
-        </h5>{" "}
-        <h6>
-          <strong> Aforo: </strong> {this.props.capacityPlace}
-          personas{" "}
-        </h6>{" "}
+        <article className="event-card">
+          <img src={this.props.imgUrl} alt={"Foto evento"} />
+          <h3>
+            <strong> {this.props.nameEvent} </strong>
+          </h3>
+          <h4>
+            <strong> Ciudad: </strong> {this.props.town}
+          </h4>
+          < h5 className = " paragraph" >
+            <strong> Categoria: </strong> {this.props.category}
+          </h5 >
+          {/* <h5>
+          <strong> Correo electrónico:</strong> {this.props.email}
+          
+        </h5> */}
+        {/* <h6>
+          <strong> Plazas: </strong> {this.props.capacityPlace}
+          personas
+        </h6>
         <p>
-          <strong> Descripción: </strong> {this.props.description}{" "}
-        </p>{" "}
-        <br> </br>
-        <Link
-          className="btn btn-sm btn-dark"
-          to={`/eventsDetails/${this.props._id}`}
-        >
-          Ver detalles{" "}
-        </Link>
+          <strong> Descripción: </strong> {this.props.description}
+        </p> */}
+          <Link
+            className = "btn btn-sm btn-dark button-card"
+            to={`/eventsDetails/${this.props._id}`}
+          >
+            Ver detalles
+          </Link>
+    
+        </article>
       </Col>
     );
   }

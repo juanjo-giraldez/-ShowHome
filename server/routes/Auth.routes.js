@@ -6,16 +6,20 @@ const LocalStrategy = require('passport-local').Strategy;
 
 const User = require('../models/User.model');
 
+const upload = require('../configs/cloudinary.config')
+
 
 
 authRoutes.post('/signup', (req, res, next) => {
   const {
     username,
     password,
+    firstName,
     lastName,
-    role
-
-  } = req.body
+    role,
+    category,
+    imgUrl
+  } = req.body;
   if (!username || !password) {
     res.status(400).json({
       message: 'Provide username and password'
@@ -54,8 +58,12 @@ authRoutes.post('/signup', (req, res, next) => {
     const aNewUser = new User({
       username: username,
       password: hashPass,
+      firstName: firstName,
       lastName: lastName,
       role: role,
+      category: category,
+      imgUrl: imgUrl
+
     });
 
     aNewUser.save(err => {
@@ -138,5 +146,17 @@ authRoutes.get('/loggedin', (req, res, next) => {
     message: 'Unauthorized'
   });
 });
+
+
+authRoutes.post("/upload", upload.single("imgUrl"), (req, res, next) => {
+
+
+  if (!req.file) {
+    next(new Error("No file uploaded!"));
+    return;
+  }
+  res.json({ secure_url: req.file.secure_url });
+});
+
 
 module.exports = authRoutes;

@@ -30,12 +30,10 @@ class Navigation extends Component {
               <Navbar.Toggle aria-controls="basic-navbar-nav" />
               <Navbar.Collapse>
                   <Nav className="mr-auto">
-                      
-                      <Nav.Link as="li"><Link to="/profile/creator">Mi perfil</Link></Nav.Link>
-                      
-                      <Nav.Link as="li"><Link to="/plans">Planes</Link></Nav.Link>
-                      <Nav.Link as="li" >< Link to= "/search" > Busqueda </Link></Nav.Link >
-                      <Nav.Link as="li"> <Link onClick={this.logoutUser}>Logout</Link></Nav.Link>
+                      <Nav.Link as="li"><Link to="/profile/creator" className="anchorNav">Mi perfil</Link></Nav.Link>
+                      <Nav.Link as="li"><Link to="/plans" className="anchorNav">Planes</Link></Nav.Link>
+                      < Nav.Link as = "li" > < Link to = "/search" className = "anchorNav"> Busqueda </Link></Nav.Link >
+                      < Nav.Link as = "li" > < Link onClick = {this.logoutUser} className="anchorNav"> Salir </Link></Nav.Link >
                   </Nav>
                   <Nav className="ml-auto">
                       <Navbar.Text>Bienvenid@ {saludo}</Navbar.Text>
@@ -52,11 +50,11 @@ class Navigation extends Component {
               <Navbar.Toggle aria-controls="basic-navbar-nav" />
               <Navbar.Collapse>
                   <Nav className="mr-auto">
-                      <Nav.Link as="li"><Link to= "/profile/host">Mi perfil</Link></Nav.Link>
-                      <Nav.Link as="li"><Link to= "/profile/spaces">Mis Espacios</Link></Nav.Link>
-                      <Nav.Link as = "li" > < Link to = "/plans" > Planes </Link></Nav.Link >
-                      <Nav.Link as="li" > < Link to= "/search" > Busqueda </Link></Nav.Link >
-                      <Nav.Link as="li" onClick={this.logoutUser}>Logout</Nav.Link>
+                      <Nav.Link as="li"><Link to= "/profile/host"className="anchorNav" >Mi perfil</Link></Nav.Link>
+                      <Nav.Link as="li"><Link to= "/profile/spaces" className="anchorNav">Mis Espacios</Link></Nav.Link>
+                      <Nav.Link as = "li" > < Link to = "/plans"  className="anchorNav"> Planes </Link></Nav.Link >
+                      <Nav.Link as="li" > < Link to= "/search" className="anchorNav"> Busqueda </Link></Nav.Link >
+                      <Nav.Link as="li" onClick={this.logoutUser}className="anchorNav">Salir</Nav.Link>
                      
                   </Nav>
                   <Nav className="ml-auto">
@@ -74,10 +72,10 @@ class Navigation extends Component {
               <Navbar.Collapse>
                   <Nav className="mr-auto">
                       
-                        <Nav.Link as="li"><Link to="/profile/explorer">Mi perfil</Link></Nav.Link>
-                        <Nav.Link as="li" > < Link to= "/search" > Busqueda </Link></Nav.Link >
-                        <Nav.Link as="li" > < Link to= "/plans" > Planes </Link></Nav.Link >
-                        <Nav.Link as="li" onClick={this.logoutUser}>Logout</Nav.Link>
+                        <Nav.Link as="li"><Link to="/profile/explorer"className="anchorNav">Mi perfil</Link></Nav.Link>
+                        <Nav.Link as="li" > < Link to= "/plans" className="anchorNav"> Planes </Link></Nav.Link >
+                        <Nav.Link as="li" > < Link to= "/search" className="anchorNav"> Busqueda </Link></Nav.Link >
+                        <Nav.Link as="li" onClick={this.logoutUser}className="anchorNav">Salir</Nav.Link>
                      
 
                   </Nav>
@@ -96,15 +94,12 @@ class Navigation extends Component {
               <Navbar.Toggle aria-controls="basic-navbar-nav" />
               <Navbar.Collapse>
                   <Nav className="mr-auto">
-                      {/* <Nav.Link as="li"><Link to="/">Inicio</Link></Nav.Link>
-                      {/* <Nav.Link as="li"><Link to="/plans">Planes</Link></Nav.Link> */}
-                      <Nav.Link as="li"><Link to="/signup">Registro</Link></Nav.Link>
-                      <Nav.Link as="li"><Link to="/login">Login</Link></Nav.Link>
-                      {/* <Nav.Link as="li" onClick={this.logoutUser}>Logout</Nav.Link> */}
+                      
+                      <Nav.Link as="li"><Link to="/signup" className="anchorNav">Registro</Link></Nav.Link>
+                      <Nav.Link as="li"><Link to="/login" className="anchorNav">Iniciar sesión</Link></Nav.Link>
+                      
                   </Nav>
-                  {/* <Nav className="ml-auto">
-                      <Navbar.Text>Bienvenid@ {saludo}</Navbar.Text>
-                  </Nav> */}
+                  
               </Navbar.Collapse>
           </Navbar>
   )

@@ -9,8 +9,18 @@ export default class Services {
         })
     }
 
-    signup = (username, password, lastName, role) => this._service.post('/auth/signup', {username,password,lastName,role})
+    signup = (username, password, firstName, lastName, role, category, imgUrl) => this._service.post('/auth/signup', {
+        username,
+        password,
+        firstName,
+        lastName,
+        role,
+        category,
+        imgUrl
+
+    })
     login = (username, password) => this._service.post('/auth/login', { username,password})
     logout = () => this._service.post('/auth/logout')
     loggedin = () => this._service.get('/auth/loggedin')
+    uploadCloudinary = theFile => this._service.post('/auth/upload', theFile)
 }

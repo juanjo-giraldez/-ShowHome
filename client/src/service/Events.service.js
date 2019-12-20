@@ -14,5 +14,8 @@ export default class Services {
     postEvent = event => this._service.post('/event/newEvent', event)
     EventEdit = (event, eventID) => {return this._service.post('/event/edit', { event, eventID})}
     deleteEvent = (eventID) => this._service.get(`/event/delete/${eventID}`)
-    changeCapacityPlace = (id, capacityPlace) => this.service.post('/event/change', {id,capacityPlace})
+    getOut = (idEvent, idUser) => this._service.post('/event/exitEvent', {idEvent,idUser})
+    joinedEvent = (idEvent, idUser) => this._service.post(`/event/join`, {idEvent, idUser})
+    selectTheEvent = id => this._service.post('/event/selectEvent',{id})
+    uploadFileCloudinary = theFile => this._service.post('/event/fileUpload', theFile)
 }

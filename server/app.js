@@ -9,6 +9,7 @@ require('./configs/middlewares.config')(app)
 require('./configs/view-engine.config')(app)
 require('./configs/locals.config')(app)
 require('./configs/session.config')(app)
+require('./configs/cloudinary.config.js')
 
 
 app.use('/api/auth', require('./routes/Auth.routes'))

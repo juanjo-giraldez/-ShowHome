@@ -17,17 +17,38 @@ class EventForm extends Component {
             event: {
                 creator: props.loggedInUser,
                 nameEvent: "",
-                category: "cinema",
+                participant: [],
+                category: "Cine",
                 email: "",
                 town: "",
                 capacityPlace: 0,
-                description: ""
+                description: "",
+                imgUrl: ""
             }
-
         }
-
     }
 
+    signupFileImage = e => {
+        console.log("entra en signupImage")
+        const uploadData = new FormData()
+        uploadData.append('imgUrl', e.target.files[0])
+
+        this.EventsService.uploadFileCloudinary(uploadData)
+            .then(theFile => {
+                console.log("respuesta ok de cloudinary", theFile)
+                this.setState({
+                   disabledButton: false,
+                     buttonText: 'Crear plan',
+                     event: {
+                       ...this.state.event,
+                       imgUrl: theFile.data.secure_url
+                     }
+                })
+            })
+
+            .catch(err => console.log('error upload image', err));
+
+        }
 
     handleSubmit = e => {
         e.preventDefault()
@@ -49,63 +70,98 @@ class EventForm extends Component {
         })
     }
 
-    // handleFileUpload = e => {
-    //     this.setState({ disabledButton: true, buttonText: 'Subiendo imagen...' })
-
-    //     const uploadData = new FormData()
-    //     uploadData.append("imageUrl", e.target.files[0])
-    //     this._filesService.handleUpload(uploadData)
-    //         .then(response => {
-    //             console.log('Subida de archivo finalizada! La URL de Cloudinray es: ', response.data.secure_url)
-    //             this.setState({
-    //                 disabledButton: false,
-    //                 buttonText: 'Crear montaña rusa',
-    //                 coaster: { ...this.state.coaster, imageUrl: response.data.secure_url }
-    //             })
-    //         })
-    //         .catch(err => console.log(err))
-    // }
+    
 
     render() {
         return (
-            <Container>
+          <Container>
             <Form onSubmit={this.handleSubmit}>
-                <Form.Group>
-                    <Form.Label>Nombre del evento</Form.Label>
-                    <Form.Control type="text" name="nameEvent" onChange={this.handleInputChange} value={this.state.event.nameEvent} />
-                </Form.Group>
-                <Form.Group>
-                    <Form.Label>Evento</Form.Label>
-                    <Form.Control as="select" name="category" onChange={this.handleInputChange} value={this.state.event.category}>
-                    
-                        <option value="cinema">Cine en casa</option>
-                        <option value="concert">Concierto</option>
-                        <option value="monologue">Monólogo</option>
-                        <option value="masterClass">Clase magistral</option>
-                        <option value="show">Expectáculo</option>
-
-                        </Form.Control>
-                </Form.Group>
-                <Form.Group>
-                    <Form.Label>Descripción</Form.Label>
-                        <Form.Control as="textarea" name="description" placeholder="Breve descripción del evento"onChange={this.handleInputChange} value={this.state.event.description} />
-                </Form.Group>
-                <Form.Group>
-                    <Form.Label>Ciudad</Form.Label>
-                        <Form.Control type="text" name="town" placeholder="Madrid" onChange={this.handleInputChange} value={this.state.event.town} />
-                </Form.Group>
-                <Form.Group>
-                    <Form.Label>Capacidad de aforo</Form.Label>
-                    <Form.Control type="number" name="capacityPlace" onChange={this.handleInputChange} value={this.state.event.capacityPlace} />
-                </Form.Group>
-                <Form.Group>
-                    <Form.Label>Correo electrónico</Form.Label>
-                    <Form.Control name="email" type="email" placeholder="@dominio.com" onChange={this.handleInputChange} value={this.state.event.email}/>
-                </Form.Group>
-                <Button variant="dark" size="sm" type="submit" disabled={this.state.disabledButton}>{this.state.buttonText}</Button>
+              <Form.Group>
+                <Form.Label>Nombre del evento</Form.Label>
+                <Form.Control
+                  type="text"
+                  name="nameEvent"
+                  onChange={this.handleInputChange}
+                  value={this.state.event.nameEvent}
+                />
+              </Form.Group>
+              <Form.Group>
+                <Form.Label>Evento</Form.Label>
+                <Form.Control
+                  as="select"
+                  name="category"
+                  onChange={this.handleInputChange}
+                  value={this.state.event.category}
+                >
+                  'Cine', 'Música', 'Clases', 'Encuentros', 'Espectaculos'
+                  < option value = "Cine" > Cine </option>
+                  < option value = "Música" > Música </option>
+                  < option value = "Clases" > Clases </option>
+                  < option value = "Encuentros" > Encuentros </option>
+                  < option value = "Espectaculos" > Espectaculos </option>
+                </Form.Control>
+              </Form.Group>
+              <Form.Group>
+                <Form.Label>Descripción:</Form.Label>
+                <Form.Control
+                  as="textarea"
+                  name="description"
+                  placeholder="Breve descripción del evento"
+                  onChange={this.handleInputChange}
+                  value={this.state.event.description}
+                />
+              </Form.Group>
+              <Form.Group>
+                <Form.Label>Ciudad:</Form.Label>
+                <Form.Control
+                  type="text"
+                  name="town"
+                  placeholder="Madrid"
+                  onChange={this.handleInputChange}
+                  value={this.state.event.town}
+                />
+              </Form.Group>
+              <Form.Group>
+                <Form.Label>Plazas: </Form.Label>
+                <Form.Control
+                  type="number"
+                  name="capacityPlace"
+                  onChange={this.handleInputChange}
+                  value={this.state.event.capacityPlace}
+                />
+              </Form.Group>
+              <Form.Group>
+                <Form.Label>Correo electrónico:</Form.Label>
+                <Form.Control
+                  name="email"
+                  type="email"
+                  placeholder="@dominio.com"
+                  onChange={this.handleInputChange}
+                  value={this.state.event.email}
+                />
+              </Form.Group>
+              <Form.Group>
+                <Form.Label>Subir imagen </Form.Label>
+                <Form.Control
+                  type="file"
+                  name="imgUrl"
+                  onChange = {
+                    this.signupFileImage
+                  }
+                />
+              </Form.Group>
+              <Button
+              className = "button-card "
+                variant="dark"
+                size="sm"
+                type="submit"
+                disabled={this.state.disabledButton}
+              >
+                {this.state.buttonText}
+              </Button>
             </Form>
-            </Container>
-        )
+          </Container>
+        );
     }
 }
 

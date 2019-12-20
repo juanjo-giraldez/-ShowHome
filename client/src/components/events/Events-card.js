@@ -19,7 +19,8 @@ class EventCard extends React.Component {
 
 
     return (
-      <Col md={4}>
+      <Col className="event-card" md={4}>
+        <img src={this.props.imgUrl} alt={"Foto evento"}/>
         <h3>
           <strong>{this.props.nameEvent}</strong>
         </h3>
@@ -36,20 +37,20 @@ class EventCard extends React.Component {
           {this.props.surface} metros cuadrados
         </h5>
         <h6>
-          <strong>Aforo:</strong>
+          <strong>Plazas:</strong>
           {this.props.capacityPlace} personas
         </h6>
-        <p>
+        <p className="paragraph">
           <strong>Descripción:</strong>
           {this.props.description}
         </p>
         <br></br>
 
-        <Button variant="dark" onClick={this.handleShow}>
+        <Button className="button-card" variant="dark" onClick={this.handleShow}>
           Editar
         </Button>
 
-        <Button
+        < Button className="btn-top button-card"
           variant="dark"
           onClick={() => this.props.deleteEvent(this.props._id)}
         >

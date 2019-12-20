@@ -18,7 +18,10 @@ class EventList extends React.Component {
       showModalWindow: false
     };
   }
-  componentDidMount = () => this.updateEventsList();
+  componentDidMount = () => {
+  this.updateEventsList();
+  }
+    
 
   updateEventsList = () => {
     
@@ -46,7 +49,7 @@ deleteEvent = id => {
     return (
       <section>
         <Container>
-          <h1>Este son los planes , mira y unete alguno... </h1>
+          <h1 className="text-center">Estos son los planes , mira y unete alguno... </h1>
 
           {/* <Button variant="dark" onClick={this.handleShow}>Añadir evento</Button> */}
 

@@ -28,8 +28,7 @@ class App extends Component {
       loggedInUser: user
     });
     console.log(
-      "El método 'setTheUser' de App.js se ha invocado, pasando al estado 'loggedInUser:",
-      this.state.loggedInUser
+      "El método 'setTheUser' de App.js se ha invocado, pasando al estado 'loggedInUser:"
     );
   };
 
@@ -58,122 +57,19 @@ class App extends Component {
 
     return (
       <>
-        <Navbar
-          loggedInUser={this.state.loggedInUser}
-          setUser={this.setTheUser}
-        />{" "}
+        <Navbar loggedInUser={this.state.loggedInUser} setUser={this.setTheUser} />
         <Switch>
           <Route exact path="/" component={Index} />{" "}
-          <Route
-            exact
-            path="/search"
-            render={() =>
-              this.state.loggedInUser ? (
-                <Search loggedInUser={this.state.loggedInUser} />
-              ) : (
-                <Redirect
-                  to="/
-              "
-                />
-              )
-            }
-          />{" "}
-          {/* < Route exact path = "/plans"  render = {() => this.state.loggedInUser ? ( < Plans loggedInUser = {this.state.loggedInUser}/>) : ( <Redirect to = "/" />)} /> */}{" "}
-          <Route
-            exact
-            path="/profile/creator"
-            render={() =>
-              this.state.loggedInUser ? (
-                <Creator loggedInUser={this.state.loggedInUser} />
-              ) : (
-                <Redirect
-                  to="/
-              "
-                />
-              )
-            }
-          />{" "}
-          <Route
-            exact
-            path="/profile/spaces"
-            render={() =>
-              this.state.loggedInUser ? (
-                <SpacesList loggedInUser={this.state.loggedInUser} />
-              ) : (
-                <Redirect
-                  to="/
-              "
-                />
-              )
-            }
-          />{" "}
-          <Route
-            exact
-            path="/plans"
-            render={() =>
-              this.state.loggedInUser ? (
-                <EventsList loggedInUser={this.state.loggedInUser} />
-              ) : (
-                <Redirect
-                  to="/
-              "
-                />
-              )
-            }
-          />{" "}
-          <Route
-            exact
-            path="/profile/host"
-            render={() =>
-              this.state.loggedInUser ? (
-                <Host loggedInUser={this.state.loggedInUser} />
-              ) : (
-                <Redirect
-                  to="/
-              "
-                />
-              )
-            }
-          />{" "}
-          <Route
-            exact
-            path="/profile/explorer"
-            render={() =>
-              this.state.loggedInUser ? (
-                <Explorer loggedInUser={this.state.loggedInUser} />
-              ) : (
-                <Redirect
-                  to="/
-              "
-                />
-              )
-            }
-          />{" "}
-          <Route
-            exact
-            path="/eventsDetails/:id"
-            render={()=>
-              this.state.loggedInUser ? (
-                <EventDetails
-                  loggedInUser={this.state.loggedInUser}
-                 
-                />
-              ) : (
-                <Redirect
-                  to="/
-              "
-                />
-              )
-            }
-          />
-          <Route
-            path="/signup"
-            render={match => <Signup setUser={this.setTheUser} {...match} />}
-          />
-          <Route
-            path="/login"
-            render={match => <Login setUser={this.setTheUser} {...match} />}
-          />
+          <Route exact path="/search" render={() => this.state.loggedInUser ? (<Search loggedInUser={this.state.loggedInUser} />) : (<Redirect to="/"/>)}/>
+          {/* < Route exact path = "/plans"  render = {() => this.state.loggedInUser ? ( < Plans loggedInUser = {this.state.loggedInUser}/>) : ( <Redirect to = "/" />)} /> */}
+          <Route exact path="/profile/creator" render={(props) => this.state.loggedInUser ? (<Creator loggedInUser={this.state.loggedInUser} {...props}/>) : (<Redirect to="/"/>)}/>
+          <Route exact path="/profile/spaces"  render={() => this.state.loggedInUser ? (<SpacesList loggedInUser={this.state.loggedInUser} />) : (<Redirect to="/"/>)}/>
+          <Route exact path="/plans" render={() => this.state.loggedInUser ? (<EventsList loggedInUser={this.state.loggedInUser} />) : (<Redirect to="/"/>)}/>
+          <Route exact path="/profile/host" render={() => this.state.loggedInUser ? (<Host loggedInUser={this.state.loggedInUser} />) : (<Redirect to="/"/>)}/>
+          <Route exact path="/profile/explorer" render={() => this.state.loggedInUser ? (<Explorer loggedInUser={this.state.loggedInUser} />) : (<Redirect to="/"/>)}/>
+          <Route exact path="/eventsDetails/:id" render={(props)=> this.state.loggedInUser ? (<EventDetails loggedInUser={this.state.loggedInUser}{...props}/>) : (<Redirect to="/"/>)}/>
+          <Route path="/signup"render={match => <Signup setUser={this.setTheUser} {...match} />}/>
+          <Route path="/login" render={match => <Login setUser={this.setTheUser} {...match} />}/>
         </Switch>{" "}
       </>
     );
