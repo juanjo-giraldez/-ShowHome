@@ -8,6 +8,7 @@ class EventEdit extends Component {
     super(props);
     this.service = new EventEditService();
     this.state = {
+      participant:this.props.event.participant,
       nameEvent: this.props.event.nameEvent,
       category: this.props.event.category,
       email: this.props.event.email,

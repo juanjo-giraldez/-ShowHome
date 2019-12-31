@@ -1,12 +1,16 @@
 import React, { Component } from "react";
 import EventsDetailsService from "../../service/Events.service";
-import { Container, Row, Col, Button } from "react-bootstrap";
+import { Container, Row, Col, Button, Toast } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
 class EventDetail extends Component {
   constructor(props) {
     super(props);
-    this.state =  {event: {} };
+    this.state =  {
+      event: {},
+      showToast: false,
+      toastText: '', 
+    };
     this._service = new EventsDetailsService();
   }
   
@@ -42,14 +46,18 @@ class EventDetail extends Component {
     let id = this.props.match.params.id
     let idUser = this.props.loggedInUser._id
     let inclued = this.state.event.participant
-    if (inclued.includes(idUser)) {
-      this.role()
-     }
+    let capacity = this.state.event.capacityPlace
+    if (inclued.length === capacity){
+      return this.handleToastOpen('Evento completo')
+    }else if (inclued.includes(idUser)) { this.handleToastOpen('Ya estas apuntado, consulta tu pérfil') } //this.role()
       else{
         this._service.joinedEvent(id, idUser)
         this.role()
       }
   }
+
+  handleToastClose = () => this.setState({ showToast: false, toastText: '' })
+  handleToastOpen = text => this.setState({ showToast: true, toastText: text })
   
   
   render() {
@@ -90,6 +98,24 @@ class EventDetail extends Component {
             
           </Row>
         </section>
+
+        <Toast
+          onClose={this.handleToastClose}
+          show={this.state.showToast}
+          delay={3000}
+          autohide
+          style={{
+            position: 'fixed',
+            right: '10px',
+            bottom: '10px',
+            minWidth: '250px'
+          }}>
+          <Toast.Header>
+            <strong className="mr-auto">Aviso</strong>
+            <small>Evento en tu pérfil</small>
+          </Toast.Header>
+          <Toast.Body>{this.state.toastText}</Toast.Body>
+        </Toast>
       </Container>
     );
   }
