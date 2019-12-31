@@ -42,67 +42,67 @@ class CreatorProfile extends React.Component {
           events: eventlist
         });
       })
-      
       .catch(err => console.log("Error", err));
-
-    let idAll = this.props.loggedInUser && this.props.loggedInUser._id
-    
-    this._EventService
+      
+      let idAll = this.props.loggedInUser && this.props.loggedInUser._id
+      
+      this._EventService
       .selectTheEvent(idAll)
       .then(allEventsFromDB => {
         
-       
+        
         this.setState({
           eventsSelect: allEventsFromDB.data
         });
-
+        
       })
-
+      
       .catch(err => console.log("Error", err));
-      };
-
-
-      deleteEvent = id => {
-        this._EventService
-          .deleteEvent(id)
-          .then(this.updateEventsList)
-      }
-
-      deleteSelect = (id) => {
-        console.log("soy el delete")
-  
-        let idUser = this.props.loggedInUser._id
-        this._EventService
-        .getOut(id, idUser)
-        .then(this.updateEventsList)
-  }
+    };
     
-      handleShow = () =>
-        this.setState({
-          showModalWindow: true
-        });
-      handleClose = () =>
-        this.setState({
-          showModalWindow: false
-        });
     
-      render() {
-        console.log(this.props.loggedInUser)
+    deleteEvent = id => {
+      this._EventService
+      .deleteEvent(id)
+      .then(this.updateEventsList)
+    }
+    
+    deleteSelect = (id) => {
+      console.log("soy el delete")
+      
+      let idUser = this.props.loggedInUser._id
+      this._EventService
+      .getOut(id, idUser)
+      .then(this.updateEventsList)
+    }
+    
+    handleShow = () =>
+    this.setState({
+      showModalWindow: true
+    });
+    handleClose = () =>
+    this.setState({
+      showModalWindow: false
+    });
+    
+    render() {
+      
+       
         return (
           <section>
             <Container>
               <Row>
+              <Col md={6}>
+                <div className="row justify-content-center align-items-center ">
+                <img  src={this.props.loggedInUser.imgUrl} alt={"Foto usuario"}
+                />
+                </div>
+              </Col>
                 <Col md={6}>
                 <h2> Usuario: {this.props.loggedInUser.username}</h2>
                 <h4> Nombre: {this.props.loggedInUser.firstName}</h4>
                 <h4> Apellidos: {this.props.loggedInUser.lastName}</h4>
                 <h4> Gustos y preferencias: {this.props.loggedInUser.category}</h4>
-              </Col>
-              <Col md={6}>
-                <img
-                  src={this.props.loggedInUser.imgUrl}
-                  alt={"Foto usuario"}
-                />
               </Col>
             </Row>
               

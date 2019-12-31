@@ -8,6 +8,7 @@ class EventSearchCards extends React.Component {
   }
 
   render() {
+    console.log(this.props)
     return (
       <Col className="event-card" md={3}>
         

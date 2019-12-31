@@ -43,6 +43,30 @@ section {
 
 }
 
+.event-img {
+ position: absolute;
+ width: 90%;
+ /* width: ;//150px; */
+ top: 0;
+ left: 0;
+ right: 0;
+ bottom: 20px;
+ margin: auto;
+ object-fit: cover;
+}
+
+.event-profile-img {
+  position: absolute;
+  width: 35%;
+  /* width: ;//150px; */
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 30px;
+  margin: auto;
+  object-fit: cover;
+}
+
 .event-card h3 {
   font-size: 1.2em;
   margin: 5px 0;

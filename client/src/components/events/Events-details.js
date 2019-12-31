@@ -11,7 +11,6 @@ class EventDetail extends Component {
   }
   
   
-  
   componentDidMount = () => {
     
     const eventId = this.props.match.params.id;
@@ -30,21 +29,29 @@ class EventDetail extends Component {
     .catch(err => console.log("Error", err));
   };
   
-  
+  role() {
+   let userRole = this.props.loggedInUser.role
+     if(userRole === 'creator') { return (this.props.history.push('/profile/creator')) }
+     if (userRole === 'host') { return (this.props.history.push('/profile/host')) }
+     if (userRole === 'explorer') { return (this.props.history.push('/profile/explorer')) }
+  }
   
   
   
   joinThePlan = () => {
     let id = this.props.match.params.id
     let idUser = this.props.loggedInUser._id
-    this._service.joinedEvent(id, idUser)
-    let userRole = this.props.loggedInUser.role
-    if (userRole === 'creator') {return (this.props.history.push('/profile/creator'))}
-    if (userRole === 'host') {return (this.props.history.push('/profile/host'))}
-    if (userRole === 'explorer') {return (this.props.history.push('/profile/explorer'))}
-    }
-    
-
+    let inclued = this.state.event.participant
+    if (inclued.includes(idUser)) {
+      this.role()
+     }
+      else{
+        this._service.joinedEvent(id, idUser)
+        this.role()
+      }
+  }
+  
+  
   render() {
     
     
@@ -52,8 +59,8 @@ class EventDetail extends Component {
       <Container>
         <section>
           <Row>
-            <Col md={6}>
-              <img src={this.state.event.imgUrl} alt={'foto de detalles '}></img>
+            <Col md={6} >
+              <img className="event-img" src={this.state.event.imgUrl} alt={'foto de detalles '}></img>
               
             </Col>
             <Col md={6}>

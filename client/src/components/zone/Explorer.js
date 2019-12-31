@@ -54,16 +54,16 @@ updateEventsList = () => {
           <Container>
             <Row>
               <Col md={6}>
-                <h2> Usuario: {this.props.loggedInUser.username}</h2>
-                <h4> Nombre: {this.props.loggedInUser.firtName}</h4>
-                <h4> Apellidos: {this.props.loggedInUser.lastName}</h4>
-                <h4> Gustos y preferencias: {this.props.loggedInUser.category}</h4>
+                < div >
+                <img className="mx-auto d-block" src={this.props.loggedInUser.imgUrl} alt={"Foto usuario"}
+                />
+                </div>
               </Col>
               <Col md={6}>
-                <img
-                  src={this.props.loggedInUser.imgUrl}
-                  alt={"Foto usuario"}
-                />
+                <h2> Usuario: {this.props.loggedInUser.username}</h2>
+                <h4> Nombre: {this.props.loggedInUser.firstName}</h4>
+                <h4> Apellidos: {this.props.loggedInUser.lastName}</h4>
+                <h4> Gustos y preferencias: {this.props.loggedInUser.category}</h4>
               </Col>
             </Row>
             <Row></Row>

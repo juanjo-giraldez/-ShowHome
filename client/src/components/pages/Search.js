@@ -23,7 +23,6 @@ class AllEvents extends Component {
         this._service
             .getAllEvents()
             .then(allEventsFromDB => {
-                console.log("soy yo");
                 this.setState({ events: allEventsFromDB.data });
             })
             .catch(err => console.log("Error", err));
@@ -59,7 +58,6 @@ class AllEvents extends Component {
                   />
                 </div>
                 <br></br>
-                {console.log(this.state.events)}
                 <Row>
                   {filterItems().map(events => (
                     <EventsSearch key={events._id} {...events} />
