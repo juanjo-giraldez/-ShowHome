@@ -90,9 +90,7 @@ class EventDetail extends Component {
               <Button className="button-card"variant="dark" onClick={this.joinThePlan}>Me apunto</Button> 
               </Row>
               < Row >
-              < Link 
-              to = "/plans"
-              className = "btn btn-dark button-card btn-top  " > Volver </Link>
+              < Link to = "/plans" className = "btn btn-dark button-card btn-top  " > Volver </Link>
               </Row>
             </Col>
             

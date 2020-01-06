@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import { Container, Button, Form } from 'react-bootstrap'
-
-
 import EventsService from '../../service/Events.service'
+
+
 
 
 class EventForm extends Component {

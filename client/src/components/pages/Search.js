@@ -5,7 +5,7 @@ import EventService from "../../service/Events.service";
 import { Container, Row } from "react-bootstrap";
 import EventsSearch from "../events/Events-search-card"
 
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 
 class AllEvents extends Component {
     constructor() {
@@ -20,11 +20,11 @@ class AllEvents extends Component {
     componentDidMount = () => this.updateEventsList();
 
     updateEventsList = () => {
-        this._service
-            .getAllEvents()
+        this._service.getAllEvents()
             .then(allEventsFromDB => {
                 this.setState({ events: allEventsFromDB.data });
             })
+      
             .catch(err => console.log("Error", err));
     };
     handleSearchChange = e => this.setState({ search: e.target.value });
@@ -38,6 +38,7 @@ class AllEvents extends Component {
 
             );
         };
+      console.log(this.state.events)
         return (
           <div>
             <section>

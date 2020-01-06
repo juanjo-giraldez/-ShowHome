@@ -32,8 +32,9 @@ class Navigation extends Component {
                   <Nav className="mr-auto">
                       <Nav.Link as="li"><Link to="/profile/creator" className="anchorNav">Mi perfil</Link></Nav.Link>
                       <Nav.Link as="li"><Link to="/plans" className="anchorNav">Planes</Link></Nav.Link>
-                      < Nav.Link as = "li" > < Link to = "/search" className = "anchorNav"> Busqueda </Link></Nav.Link >
-                      < Nav.Link as = "li" > < Link onClick = {this.logoutUser} className="anchorNav"> Salir </Link></Nav.Link >
+                      <Nav.Link as="li"><Link to = "/search" className = "anchorNav"> Busqueda </Link></Nav.Link >
+                      <Nav.Link as="li"><Link to ="/spaceSearch" className = "anchorNav"> Espacios </Link></Nav.Link >
+                      <Nav.Link as="li"><Link onClick = {this.logoutUser} className="anchorNav"> Salir </Link></Nav.Link >
                   </Nav>
                   <Nav className="ml-auto">
                       <Navbar.Text>Bienvenid@ {saludo}</Navbar.Text>

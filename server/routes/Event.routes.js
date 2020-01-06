@@ -31,11 +31,7 @@ router.post("/edit", (req, res) => {
     capacityPlace,
     description
   } = req.body.event;
-  Event.findByIdAndUpdate(
-    req.body.eventID,
-    { participant,nameEvent, category, email, town, capacityPlace, description },
-    { new: true }
-  )
+  Event.findByIdAndUpdate(req.body.eventID, { participant,nameEvent, category, email, town, capacityPlace, description }, { new: true })
     .then(theNewUpdatedEvent => res.json(theNewUpdatedEvent))
     .catch(err => console.log("error!!", err));
 });

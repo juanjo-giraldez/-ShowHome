@@ -146,15 +146,15 @@ class CreatorProfile extends React.Component {
                 onHide={this.handleClose}
               >
                 < Modal.Header closeButton>
-                  <Modal.Title> Añadir nuevo evento </Modal.Title>{" "}
-                </Modal.Header>{" "}
+                  <Modal.Title> Añadir nuevo evento </Modal.Title>
+                </Modal.Header>
                 < Modal.Body>
                   <EventForm
                     closeModalWindow={this.handleClose}
                     updateEventsList={this.updateEventsList}
                     loggedInUser={this.state.loggedInUser}
-                  />{" "}
-                </Modal.Body>{" "}
+                  />
+                </Modal.Body>
               </Modal>
             </div>
           </section>

@@ -128,7 +128,7 @@ class SignupForm extends Component {
             >
               < option value = "" > ¿Qué tipo de usuarios erés? </option>
               <option value="explorer">Buscador de Planes</option>
-              {/* <option value="host">Anfitrión</option> */}
+              <option value="host">Anfitrión</option>
               <option value="creator">Creador de planes</option>
             </Form.Control>
           </Form.Group>

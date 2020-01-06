@@ -6,12 +6,18 @@ const spaceSchema = new Schema({
         type: Schema.Types.ObjectId,
         ref: "User"
     },
+    hostedEvent: [{
+        type: Schema.Types.ObjectId,
+        ref: "User",
+        default: []
+    }],
     nameSpace: String,
     place: String,
     surface: Number,
     capacityPlace: Number,
     description: String,
     town: String,
+    imgUrl: String
     
 
 }, {

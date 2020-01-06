@@ -18,7 +18,8 @@ class SpaceCard extends React.Component {
     handleClose = () => this.setState({ showModalWindow: false })
     render() {
         return (
-          <Col md={4}>
+          <Col  className="event-card" md={4}>
+            <img src={this.props.imgUrl} alt={"Foto espacio"} />
             <h3>
               <strong>{this.props.nameSpace}</strong>
             </h3>
@@ -38,17 +39,17 @@ class SpaceCard extends React.Component {
               <strong>Aforo:</strong>
               {this.props.capacityPlace} personas
             </h6>
-            <p>
+            <p className="paragraph">
               <strong>Descripción:</strong>
               {this.props.description}
             </p>
             <br></br>
          
-            <Button variant="dark" onClick={this.handleShow}>
+            <Button className="button-card" variant="dark" onClick={this.handleShow}>
               Editar
             </Button>
            
-            <Button
+            <Button className="btn-top button-card"
               variant="dark"
               onClick={() => this.props.deleteSpace(this.props._id)}
             >
@@ -61,11 +62,12 @@ class SpaceCard extends React.Component {
               </Modal.Header>
               <Modal.Body>
                 <SpacesEdit
-                  //   match={this.props}
+                  space={this.props}
                   updateSpacesList={this.props.updateSpacesList}
                   closeModalWindow={this.handleClose}
                 
-                deleteSpace={this.props} updateSpaceList={this.props.updateSpaceList} closeModalWindow={this.handleClose} />
+                // deleteSpace={this.props} updateSpaceList={this.props.updateSpaceList} closeModalWindow={this.handleClose} 
+                />
               </Modal.Body>
             </Modal>
           </Col>

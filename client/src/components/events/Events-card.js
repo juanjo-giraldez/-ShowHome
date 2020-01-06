@@ -59,7 +59,7 @@ class EventCard extends React.Component {
 
         <Modal show={this.state.showModalWindow} onHide={this.handleClose}>
           <Modal.Header closeButton>
-            <Modal.Title>Editar espacio</Modal.Title>
+            <Modal.Title>Editar evento</Modal.Title>
           </Modal.Header>
           <Modal.Body>
             <EventsEdit
