@@ -41,6 +41,13 @@ router.get("/delete/:id", (req, res) => {
         .catch(err => console.log(err));
 });
 
+router.post("/join", (req, res) => {
+  const {idUser, idSpace} = req.body
+  Space.findByIdAndUpdate(idSpace, { $push: { hostedEvent: idUser}})
+    .then(newJoin => res.json(newJoin))
+    .catch(err => console.log(err));
+});
+
 router.get("/:id", (req, res) => {
   const spacesId = req.params.id
   Space.findById(spacesId)
