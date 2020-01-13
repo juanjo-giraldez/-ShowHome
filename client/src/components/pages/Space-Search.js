@@ -5,8 +5,8 @@ import SpaceSearch from "../spaces/Spaces-search-card"
 import { Link } from "react-router-dom";
 
 class AllSpaces extends Component {
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
         
         this._service = new SpaceService(); 
         this.state = {
@@ -26,19 +26,24 @@ class AllSpaces extends Component {
         
     };
     
+
+
     handleSerchChange = e => this.setState({search: e.target.value });
+
+
     
     render() {
-        const filterItems = () => {
-            let searchs = this.state.search;
-            return this.state.spaces.filter(
-                el => el.nameSpace.toLowerCase().indexOf(searchs.toLowerCase()) > -1 ||
-                el.town.toLowerCase().indexOf(searchs.toLowerCase()) > -1 ||
-                    el.surface.toString().toLowerCase().indexOf(searchs.toString().toLowerCase()) > -1 ||
-                    el.capacityPlace.toString().toLowerCase().indexOf(searchs.toString().toLowerCase()) > -1 
-                ); 
-            } 
-            console.log(this.state.spaces)
+      const filterItems = () => {
+        let searchs = this.state.search;
+        return this.state.spaces.filter(
+          el => el.nameSpace.toLowerCase().indexOf(searchs.toLowerCase()) > -1 ||
+          el.town.toLowerCase().indexOf(searchs.toLowerCase()) > -1 ||
+          el.surface.toString().toLowerCase().indexOf(searchs.toString().toLowerCase()) > -1 ||
+          el.capacityPlace.toString().toLowerCase().indexOf(searchs.toString().toLowerCase()) > -1 
+          ); 
+        } 
+        console.log(this.props.loggedInUser._id)
+        
             return (
                 <>
           <Container>
@@ -60,7 +65,7 @@ class AllSpaces extends Component {
                 <br></br>
                 <Row>
                   {filterItems().map(spaces => (
-                    <SpaceSearch key={spaces._id} {...spaces} />
+                    <SpaceSearch key={spaces._id} {...spaces} loggedInUser={this.props.loggedInUser._id}/>
                   ))}
                 </Row>
               <Row>

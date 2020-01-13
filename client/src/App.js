@@ -62,7 +62,7 @@ class App extends Component {
         <Switch>
           <Route exact path="/" component={Index} />
           <Route exact path="/search" render={() => this.state.loggedInUser ? (<Search loggedInUser={this.state.loggedInUser} />) : (<Redirect to="/"/>)}/>
-          <Route exact path="/spaceSearch" render={() => this.state.loggedInUser ? (<SpaceSearch loggedInUser={this.state.loggedInUser} />) : (<Redirect to="/"/>)}/>
+          <Route exact path="/spaceSearch" render={(props) => this.state.loggedInUser ? (<SpaceSearch loggedInUser={this.state.loggedInUser} {...props}/>) : (<Redirect to="/"/>)}/>
           {/* < Route exact path = "/plans"  render = {() => this.state.loggedInUser ? ( < Plans loggedInUser = {this.state.loggedInUser}/>) : ( <Redirect to = "/" />)} /> */}
           <Route exact path="/profile/creator" render={(props) => this.state.loggedInUser ? (<Creator loggedInUser={this.state.loggedInUser} {...props}/>) : (<Redirect to="/"/>)}/>
           <Route exact path="/profile/spaces"  render={() => this.state.loggedInUser ? (<SpacesList loggedInUser={this.state.loggedInUser} />) : (<Redirect to="/"/>)}/>

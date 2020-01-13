@@ -31,7 +31,6 @@ class LoginForm extends Component {
         this._service.login(username, password, role)
             .then(theLoggedUser => {
                 this.props.setUser(theLoggedUser.data)
-                
                 this.setState({ username: '', password: '' , role: ""})
                 if (theLoggedUser.data.role === 'creator') {return(this.props.history.push('/profile/creator'))}
                 if (theLoggedUser.data.role === 'host') {return (this.props.history.push('/profile/host'))}

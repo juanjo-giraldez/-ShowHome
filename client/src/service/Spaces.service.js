@@ -14,5 +14,6 @@ export default class Services {
     postSpace = space => this._service.post('/space/newSpace', space)
     SpaceEdit = (space, spaceID) => {return this._service.post('/space/edit', { space, spaceID})}
     deleteSpace = (spaceID) => {return this._service.get(`/space/delete/${spaceID}`)}
+    joinedSpace = (idSpace, idUser) => this._service.post(`/space/join`, { idSpace, idUser})
     uploadFileCloudinary = theFile => this._service.post('/space/fileUpload', theFile)
 }

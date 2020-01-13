@@ -9,7 +9,8 @@ class EventDetail extends Component {
     this.state =  {
       event: {},
       showToast: false,
-      toastText: '', 
+      toastText: '',
+      text: '' 
     };
     this._service = new EventsDetailsService();
   }
@@ -21,7 +22,9 @@ class EventDetail extends Component {
     this._service
     .getOneEvent(eventId)
     .then(theEvent => this.setState({ event: theEvent.data }))
+    .then(e => this.changesText())
     .catch(err => console.log(err));
+    
   };
   
   updateEventsList = () => {
@@ -47,21 +50,28 @@ class EventDetail extends Component {
     let idUser = this.props.loggedInUser._id
     let inclued = this.state.event.participant
     let capacity = this.state.event.capacityPlace
+    // inclued.length === capacity ? this.handleToastOpen('Evento completo') :(inclued.includes(idUser)) ? this.handleToastOpen('Ya estas apuntado, consulta tu pérfil') : this._service.joinedEvent(id, idUser).role()
     if (inclued.length === capacity){
       return this.handleToastOpen('Evento completo')
-    }else if (inclued.includes(idUser)) { this.handleToastOpen('Ya estas apuntado, consulta tu pérfil') } //this.role()
+    }else if (inclued.includes(idUser)) { this.handleToastOpen('Ya estas apuntado, consulta tu pérfil')}
+   //this.role()
       else{
         this._service.joinedEvent(id, idUser)
         this.role()
       }
-  }
+    }
+  
+  
+  changesText = () => this.state.event.participant.includes(this.props.loggedInUser._id) ? this.newText('Estas apuntado') : this.newText('Me apunto') 
+    newText = (theText) => this.setState({ text: theText })
+  
+
 
   handleToastClose = () => this.setState({ showToast: false, toastText: '' })
   handleToastOpen = text => this.setState({ showToast: true, toastText: text })
   
   
   render() {
-    
     
     return (
       <Container>
@@ -87,7 +97,7 @@ class EventDetail extends Component {
               
               </p>
                < Row >
-              <Button className="button-card"variant="dark" onClick={this.joinThePlan}>Me apunto</Button> 
+                <Button className="button-card" variant="dark" onClick={this.joinThePlan}>{this.state.text}</Button> 
               </Row>
               < Row >
               < Link to = "/plans" className = "btn btn-dark button-card btn-top  " > Volver </Link>
@@ -110,7 +120,7 @@ class EventDetail extends Component {
           }}>
           <Toast.Header>
             <strong className="mr-auto">Aviso</strong>
-            <small>Evento en tu pérfil</small>
+            
           </Toast.Header>
           <Toast.Body>{this.state.toastText}</Toast.Body>
         </Toast>

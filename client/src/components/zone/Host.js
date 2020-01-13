@@ -36,19 +36,15 @@ updateSpacesList = () => {
         let spacelist = allSpaceFromDB.data.filter(space => this.state.loggedInUser === space.host)
         this.setState({ spaces: spacelist }) })
         .catch(err => console.log("Error", err))
-        .catch(err => console.log("Error", err));
-    
+        
     };
     
-updateEventsList= () => {
-    let idAll = this.props.loggedInUser && this.props.loggedInUser._id
-    this._EventService.selectTheEvent(idAll)
+    updateEventsList= () => {
+        let idAll = this.props.loggedInUser && this.props.loggedInUser._id
+        this._EventService.selectTheEvent(idAll)
         .then(allEventsFromDB => {
-            this.setState({
-                eventsSelect: allEventsFromDB.data
-            });
-
-        })
+            this.setState({eventsSelect: allEventsFromDB.data});})
+        .catch(err => console.log("Error", err));
     }
 
 deleteSpace = id => {
@@ -72,6 +68,7 @@ handleShow = () => this.setState({ showModalWindow: true })
 handleClose = () => this.setState({ showModalWindow: false })
 
     render() {
+        console.log(this.state.spaces)
         return (
 
 

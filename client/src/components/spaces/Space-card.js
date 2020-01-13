@@ -17,6 +17,7 @@ class SpaceCard extends React.Component {
     handleShow = () => this.setState({ showModalWindow: true })
     handleClose = () => this.setState({ showModalWindow: false })
     render() {
+      console.log(this.props)
         return (
           <Col  className="event-card" md={4}>
             <img src={this.props.imgUrl} alt={"Foto espacio"} />

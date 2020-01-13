@@ -1,13 +1,24 @@
 import React from "react";
 // import { Link } from "react-router-dom";
-import { Col } from "react-bootstrap";
+import SpaceService from "../../service/Spaces.service"
+
+import { Col, Button} from "react-bootstrap";
 
 class SpaceSearchCards extends React.Component {
   constructor(props) {
     super(props);
+    this._service = new SpaceService();
+  }
+
+  joinSpace = () => {
+    let id = this.props._id
+    let idUser = this.props.loggedInUser._id
+    this._service.joinedSpace(id, idUser)
+    // this.role()
   }
 
   render() {
+    console.log(this.props)
     return (
       <Col className="event-card" md={3}>
         
@@ -38,6 +49,9 @@ class SpaceSearchCards extends React.Component {
         >
           Ver detalles
         </Link> */}
+        < Button className="button-card " variant="dark" onClick={this.joinSpace()} >
+          Solicitar
+        </Button>
       </Col>
     );
   }
