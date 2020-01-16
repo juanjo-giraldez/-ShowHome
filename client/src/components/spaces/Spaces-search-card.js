@@ -23,15 +23,9 @@ class SpaceSearchCards extends React.Component {
       <Col className="event-card" md={3}>
         
         <img src={this.props.imgUrl} alt={"foto de detalles "} />
-        {/* <h3>
-          <strong> {this.props.nameEvent} </strong>
-        </h3> */}
         <h4>
           <strong> Ciudad: </strong> {this.props.town}
         </h4>
-        {/* <h5>
-          <strong> Categoria: </strong> {this.props.category}
-        </h5> */}
         <h5>
           <strong> Superficie: </strong> {this.props.surface}
           metros cuadrados
@@ -40,15 +34,7 @@ class SpaceSearchCards extends React.Component {
           <strong> Plazas: </strong> {this.props.capacityPlace}
           personas
         </h6>
-        {/* <p>
-          <strong> Descripción: </strong> {this.props.description}
-        </p> */}
-        {/* <Link
-          className = "btn btn-sm btn-dark button-card"
-          to={`/eventsDetails/${this.props._id}`}
-        >
-          Ver detalles
-        </Link> */}
+        
         < Button className="button-card " variant="dark" onClick={this.joinSpace()} >
           Solicitar
         </Button>

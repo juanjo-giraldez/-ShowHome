@@ -21,17 +21,7 @@ class EventCardPlans extends React.Component {
           < h5 className = " paragraph" >
             <strong> Categoria: </strong> {this.props.category}
           </h5 >
-          {/* <h5>
-          <strong> Correo electrónico:</strong> {this.props.email}
           
-        </h5> */}
-        {/* <h6>
-          <strong> Plazas: </strong> {this.props.capacityPlace}
-          personas
-        </h6>
-        <p>
-          <strong> Descripción: </strong> {this.props.description}
-        </p> */}
           <Link
             className = "btn btn-sm btn-dark button-card"
             to={`/eventsDetails/${this.props._id}`}

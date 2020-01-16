@@ -26,7 +26,6 @@ class EventEdit extends Component {
         
         this.props.updateEventsList(this.state);
         this.props.closeModalWindow();
-        // this.props.history.push("/edit");
       })
       .catch(err => console.log(err));
   };

@@ -118,7 +118,6 @@ class SignupForm extends Component {
             />
           </Form.Group>
           <Form.Group>
-            {/* <Form.Label>Tipo de Usuario</Form.Label> */}
             <Form.Control
               as="select"
               name="role"
@@ -134,7 +133,6 @@ class SignupForm extends Component {
           </Form.Group>
 
           <Form.Group>
-            {/* <Form.Label>Preferencia</Form.Label> */}
             <Form.Control
               as="select"
               name="category"

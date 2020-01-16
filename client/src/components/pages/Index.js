@@ -1,6 +1,5 @@
 import React from "react";
 import { Container, Row, Col } from "react-bootstrap";
-// import  from "bootstrap"
 
 const Index = () => {
   return (

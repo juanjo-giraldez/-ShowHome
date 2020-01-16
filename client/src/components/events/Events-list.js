@@ -51,8 +51,6 @@ deleteEvent = id => {
         <Container>
           <h1 className="text-center">Estos son los planes , mira y unete alguno... </h1>
 
-          {/* <Button variant="dark" onClick={this.handleShow}>Añadir evento</Button> */}
-
           <Row>
             {this.state.events.map(event => (
               < EventCardPlans

@@ -1,10 +1,10 @@
 import React from 'react'
 import SpaceService from '../../service/Spaces.service'
-
 import { Container, Row, Button, Modal } from 'react-bootstrap'
-
 import SpaceCard from './Space-card'
 import SpaceForm from './Spaces-form'
+
+
 
 class SpaceList extends React.Component {
 

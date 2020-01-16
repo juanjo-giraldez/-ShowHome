@@ -5,7 +5,7 @@ export default class Services {
     constructor() {
         this._service = axios.create({
             baseURL: `${process.env.REACT_APP_URL}`,
-            withCredentials: true // RUTAS PERSISTENTES
+            withCredentials: true 
         })
     }
 

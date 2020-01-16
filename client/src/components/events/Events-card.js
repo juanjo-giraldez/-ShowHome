@@ -32,10 +32,6 @@ class EventCard extends React.Component {
           <strong>Categoria:</strong>
           {this.props.category}
         </h5>
-        {/* <h5>
-          <strong>Superficie: </strong>
-          {this.props.surface} metros cuadrados
-        </h5> */}
         <h6>
           <strong>Plazas:</strong>
           {this.props.capacityPlace} personas

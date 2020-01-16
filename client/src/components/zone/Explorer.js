@@ -4,26 +4,23 @@ import EventSelect from "../events/Events-card-mySelect";
 import { Container, Row, Col} from "react-bootstrap";
 
 
-
-
-
-
-
 class ExplorerProfile extends React.Component {
-  // el hijo no puede traer nada del padre sin el props
   constructor(props) {
     super(props);
-    console.log(props)
    
     this._EventService = new EventService();
     this.state = {
       loggedInUser: props.loggedInUser._id,
-      
       eventsSelect: [], 
     };
 }
-      
+
 componentDidMount = () => this.updateEventsList();
+
+
+
+
+      
 updateEventsList = () => {
     let idAll = this.props.loggedInUser && this.props.loggedInUser._id
     this._EventService
@@ -37,17 +34,15 @@ updateEventsList = () => {
         .catch(err => console.log("Error", err));
         };
       
-        deleteSelect = (id) => {
-          console.log("soy el delete")
-    
-          let idUser = this.props.loggedInUser._id
-          this._EventService
+deleteSelect = (id) => {
+    let idUser = this.props.loggedInUser._id
+    this._EventService
           .getOut(id, idUser)
           .then(this.updateEventsList)
     }
     
     
-    render() {
+render() {
       
       return (
         <section>

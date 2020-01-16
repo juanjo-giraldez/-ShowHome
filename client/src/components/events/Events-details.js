@@ -50,11 +50,9 @@ class EventDetail extends Component {
     let idUser = this.props.loggedInUser._id
     let inclued = this.state.event.participant
     let capacity = this.state.event.capacityPlace
-    // inclued.length === capacity ? this.handleToastOpen('Evento completo') :(inclued.includes(idUser)) ? this.handleToastOpen('Ya estas apuntado, consulta tu pérfil') : this._service.joinedEvent(id, idUser).role()
     if (inclued.length === capacity){
       return this.handleToastOpen('Evento completo')
     }else if (inclued.includes(idUser)) { this.handleToastOpen('Ya estas apuntado, consulta tu pérfil')}
-   //this.role()
       else{
         this._service.joinedEvent(id, idUser)
         this.role()

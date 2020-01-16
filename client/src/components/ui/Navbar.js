@@ -52,7 +52,7 @@ class Navigation extends Component {
               <Navbar.Collapse>
                   <Nav className="mr-auto">
                       <Nav.Link as="li"><Link to= "/profile/host"className="anchorNav" >Mi perfil</Link></Nav.Link>
-                      <Nav.Link as="li"><Link to= "/profile/spaces" className="anchorNav">Mis Espacios</Link></Nav.Link>
+                      {/* <Nav.Link as="li"><Link to= "/profile/spaces" className="anchorNav">Mis Espacios</Link></Nav.Link> */}
                       <Nav.Link as = "li" > < Link to = "/plans"  className="anchorNav"> Planes </Link></Nav.Link >
                       <Nav.Link as="li" > < Link to= "/search" className="anchorNav"> Busqueda </Link></Nav.Link >
                       <Nav.Link as="li" onClick={this.logoutUser}className="anchorNav">Salir</Nav.Link>

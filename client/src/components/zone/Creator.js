@@ -2,15 +2,13 @@ import React from "react";
 import EventService from "../../service/Events.service";
 
 import { Container, Row, Button, Modal , Col} from "react-bootstrap";
-
 import EventCard from "../events/Events-card";
-
 import EventSelect from "../events/Events-card-mySelect";
 import EventForm from "../events/Events-form";
 
 
 class CreatorProfile extends React.Component {
-  // el hijo no puede traer nada del padre sin el props
+  
   constructor(props) {
     super(props);
    
@@ -19,7 +17,6 @@ class CreatorProfile extends React.Component {
       loggedInUser: props.loggedInUser._id,
       events: [],
       eventsSelect: [], 
-      
       showModalWindow: false
       
     };

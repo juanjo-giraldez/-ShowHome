@@ -38,7 +38,6 @@ router.post("/edit", (req, res) => {
 
 router.post("/selectEvent", (req, res) => {
   const userId = req.body.id
-  // console.log('----------------------', userId)
   Event.find({participant: {$in: userId}})
     .then(allTheEvents => res.json(allTheEvents))
     .catch(err => console.log("DB error", err));
@@ -49,8 +48,6 @@ router.get("/delete/:id", (req, res) => {
     .then(() => res.json({ message: "delete ok" }))
     .catch(err => console.log(err));
 });
-
-
 
 
 router.post("/exitEvent", (req, res) => {

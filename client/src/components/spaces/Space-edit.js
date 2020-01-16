@@ -29,7 +29,6 @@ class SpaceForm extends Component {
 
                 this.props.updateSpacesList(this.state);
                 this.props.closeModalWindow();
-                // this.props.history.push("/edit");
             })
             .catch(err => console.log(err));
     };

@@ -2,15 +2,14 @@ import React from 'react'
 import SpaceService from '../../service/Spaces.service';
 import EventService from "../../service/Events.service";
 import EventSelect from "../events/Events-card-mySelect";
-import { Container, Row, Button, Modal, Col } from 'react-bootstrap'
-
 import SpaceCard from '../spaces/Space-card'
 import SpaceForm from '../spaces/Spaces-form'
+import { Container, Row, Button, Modal, Col } from 'react-bootstrap'
+
 
 
 
 class CreatorProfile extends React.Component {
-        // el hijo no puede traer nada del padre sin el props
         constructor(props) {
                 super(props)
             this._EventService = new EventService();
